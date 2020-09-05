@@ -188,3 +188,9 @@ def INTFUNC_(x,params,U,V):
     	Ufun[filt] = np.exp(-params[1]*x)*(U[filt] + params[1]*V[filt]*x)
     Ufun = params[0]*Ufun
     return Ufun/(1-Ufun)
+
+def MVNB(a,eta,b,g,n,m):
+    N,M = np.meshgrid(np.arange(n),np.arange(m))
+    C = 1+(1/b+1/g)/eta
+    Z_ = gammaln(a+N+M) - gammaln(a) - gammaln(N+1) - gammaln(M+1) - a*np.log(C) - N*np.log(C*eta*b) - M*np.log(C*eta*g)
+    return np.exp(Z_)
