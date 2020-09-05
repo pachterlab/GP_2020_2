@@ -3,6 +3,7 @@ from numpy import random
 from numpy import matlib
 import scipy
 from scipy.stats import nbinom
+from scipy.special import gammaln as gammaln
 
 def gill_gamma_K(k,t_matrix,S,nCells,gamma_params):
     k = np.matlib.repmat(k,nCells,1)
